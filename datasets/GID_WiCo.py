@@ -149,6 +149,7 @@ class Loader(data.Dataset):
         data_s = torch.from_numpy(data_s.transpose((2, 0, 1)))   
         data = normalize_image(data)
         data = torch.from_numpy(data.transpose((2, 0, 1)))
+        assert False, "data_s:{}, label_s:{}, data:{}, label:{}".format(data_s.shape, label_s.shape, data.shape, label.shape)
         return data_s, label_s, data, label
 
     def __len__(self):

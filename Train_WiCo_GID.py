@@ -53,7 +53,7 @@ def main():
     net = Net(4, num_classes=GID.num_classes + 1, size_context=args['size_context'],
               size_local=args['size_local']).cuda()
 
-    train_set = GID.Loader(args['data_dir'], 'train', random_crop=True, crop_nums=args['crop_nums'], random_flip=True,
+    train_set = GID.Loader(args['data_dir'], 'val', random_crop=True, crop_nums=args['crop_nums'], random_flip=True,
                            size_context=args['size_context'], size_local=args['size_local'])
     train_loader = DataLoader(train_set, batch_size=args['train_batch_size'], num_workers=args['num_workers'], shuffle=True)
     val_set = GID.Loader(args['data_dir'], 'val', sliding_crop=True, size_context=args['size_context'], size_local=args['size_local'])
