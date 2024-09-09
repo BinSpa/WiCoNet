@@ -8,9 +8,11 @@ import matplotlib.pyplot as plt
 from skimage.transform import rescale
 import cv2
 
-num_classes = 16
-GID_COLORMAP = [[125, 125, 125], [0, 0, 0], [200, 0, 0], [250, 0, 150], [200, 150, 150], [250, 150, 150], [0, 200, 0], [150,  250, 0], [150, 200, 150], [200, 0, 200], [150, 0, 250], [150, 150, 250], [250, 200, 0], [200,  200, 0], [0, 0, 200], [ 0, 150, 200], [0, 200, 250]]
-GID_CLASSES = ['Invalid', 'Other', 'industrial land', 'urban residential', 'rural residential', 'traffic land', 'paddy field', 'irrigated land', 'dry cropland', 'garden plot', 'arbor woodland', 'shrub land', 'natural grassland', 'artificial grassland', 'river', 'lake', 'pond']
+num_classes = 5
+# GID_COLORMAP = [[125, 125, 125], [0, 0, 0], [200, 0, 0], [250, 0, 150], [200, 150, 150], [250, 150, 150], [0, 200, 0], [150,  250, 0], [150, 200, 150], [200, 0, 200], [150, 0, 250], [150, 150, 250], [250, 200, 0], [200,  200, 0], [0, 0, 200], [ 0, 150, 200], [0, 200, 250]]
+# GID_CLASSES = ['Invalid', 'Other', 'industrial land', 'urban residential', 'rural residential', 'traffic land', 'paddy field', 'irrigated land', 'dry cropland', 'garden plot', 'arbor woodland', 'shrub land', 'natural grassland', 'artificial grassland', 'river', 'lake', 'pond']
+GID_COLORMAP = [[0, 0, 0], [255, 0, 0], [0, 255, 0], [0, 255, 255], [255, 255, 0], [0, 0, 255]]
+GID_CLASSES = ['unlabeled', 'built-up', 'farmland', 'forest', 'meadow', 'water']
 GID_MEAN_IRRGB = np.array([126.72, 90.76, 95.96, 87.58])
 GID_STD_IRRGB = np.array([62.91, 59.24, 58.03, 57.23])
 GID_MEAN_RGB = np.array([90.76, 95.96, 87.58])
@@ -65,16 +67,16 @@ def get_file_name(mode='train'):
 def read_RSimages(data_dir, mode, rescale_ratio=False):
     assert mode in ['train', 'val', 'test']
     data_list = []
-    img_dir = os.path.join(data_dir, mode, 'image')
+    img_dir = os.path.join(data_dir, mode, 'images')
     item_list = os.listdir(img_dir)
     for item in item_list:
-        if (item[-4:]=='.png'): data_list.append(os.path.join(img_dir, item))
+        if (item[-4:]=='.tif'): data_list.append(os.path.join(img_dir, item))
     data_length = int(len(data_list))
     count=0
     data, labels = [], []
     for it in data_list:
         img_path = it
-        mask_path = img_path.replace('image', 'label')   
+        mask_path = img_path.replace('images', 'gid_labels')   
         img = io.imread(img_path)
         label = Color2Index(io.imread(mask_path))
         if rescale_ratio:

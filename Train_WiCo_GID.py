@@ -35,11 +35,11 @@ args = {
     'lr_decay_power': 1.5,
     'print_freq': 100,
     'save_pred': True,
-    'num_workers': 4,
-    'data_dir': 'YOUR_DATA_DIR',
+    'num_workers': 10,
+    'data_dir': '/data1/gyl/RS_DATASET/FBP',
     'pred_dir': os.path.join(working_path, 'results', DATA_NAME),
     'chkpt_dir': os.path.join(working_path, 'checkpoints', DATA_NAME),
-    'log_dir': os.path.join(working_path, 'logs', DATA_NAME, NET_NAME)
+    'log_dir': os.path.join(working_path, 'gid_logs', DATA_NAME, NET_NAME)
 }
 
 if not os.path.exists(args['chkpt_dir']): os.makedirs(args['chkpt_dir'])
@@ -128,7 +128,7 @@ def train(train_loader, net, criterion, optimizer, val_loader):
         if acc_v > bestaccV:
             bestaccV = acc_v
             bestloss = loss_v
-            save_path = os.path.join(args['chkpt_dir'], NET_NAME + '_%de_OA%.2f.pth' % (curr_epoch, acc_v * 100))
+            save_path = os.path.join(args['chkpt_dir'], NET_NAME + '_GID_%de_OA%.2f.pth' % (curr_epoch, acc_v * 100))
             torch.save(net.state_dict(), save_path)
         print('Total time: %.1fs Best rec: Train %.2f, Val %.2f, Val_loss %.4f' \
               % (time.time() - begin_time, bestaccT * 100, bestaccV * 100, bestloss))
@@ -169,7 +169,7 @@ def validate(val_loader, net, criterion, curr_epoch):
 
         if args['save_pred'] and vi == 0:
             pred_color = GID.Index2Color(preds[0])
-            pred_path = os.path.join(args['pred_dir'], NET_NAME + '.png')
+            pred_path = os.path.join(args['pred_dir'], NET_NAME + '_GID.png')
             io.imsave(pred_path, pred_color)
             print('Prediction saved!')
 
