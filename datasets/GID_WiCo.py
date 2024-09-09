@@ -76,7 +76,8 @@ def read_RSimages(data_dir, mode, rescale_ratio=False):
     data, labels = [], []
     for it in data_list:
         img_path = it
-        mask_path = img_path.replace('images', 'gid_labels')   
+        mask_path = img_path.replace('images', 'gid_labels') 
+        mask_path = mask_path.replace('.tif', '_5label.png')  
         img = io.imread(img_path)
         label = Color2Index(io.imread(mask_path))
         if rescale_ratio:
