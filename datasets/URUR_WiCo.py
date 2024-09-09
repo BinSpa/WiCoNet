@@ -3,6 +3,7 @@ import cv2
 import torch
 import numpy as np
 from skimage import io
+from PIL import Image
 from torch.utils import data
 import utils.transform as transform
 from skimage.transform import rescale
@@ -64,7 +65,8 @@ def read_RSimages(data_dir, mode, rescale_ratio=False):
         img_path = it
         mask_path = img_path.replace('image', 'label')
         img = io.imread(img_path)
-        label = Color2Index(io.imread(mask_path))
+        # label = Color2Index(io.imread(mask_path))
+        label = Color2Index(np.array(Image.open(mask_path).convert('RGB')))
         if rescale_ratio:
             img = rescale_image(img, rescale_ratio, 2)
             label = rescale_image(label, rescale_ratio, 0)

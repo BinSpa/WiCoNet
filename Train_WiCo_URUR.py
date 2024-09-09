@@ -12,7 +12,7 @@ from utils.utils import accuracy, AverageMeter
 
 # Choose model and data
 ##################################################
-from datasets import GID_WiCo as GID
+from datasets import URUR_WiCo as URUR
 from models.WiCoNet import WiCoNet as Net
 
 NET_NAME = 'WiCoNet_3hw4L'
@@ -49,13 +49,13 @@ writer = SummaryWriter(args['log_dir'])
 
 
 def main():
-    net = Net(3, num_classes=GID.num_classes + 1, size_context=args['size_context'],
+    net = Net(3, num_classes=URUR.num_classes + 1, size_context=args['size_context'],
               size_local=args['size_local']).cuda()
 
-    train_set = GID.Loader(args['data_dir'], 'train', random_crop=True, crop_nums=args['crop_nums'], random_flip=True,
+    train_set = URUR.Loader(args['data_dir'], 'train', random_crop=True, crop_nums=args['crop_nums'], random_flip=True,
                            size_context=args['size_context'], size_local=args['size_local'])
     train_loader = DataLoader(train_set, batch_size=args['train_batch_size'], num_workers=args['num_workers'], shuffle=True)
-    val_set = GID.Loader(args['data_dir'], 'val', sliding_crop=True, size_context=args['size_context'], size_local=args['size_local'])
+    val_set = URUR.Loader(args['data_dir'], 'val', sliding_crop=True, size_context=args['size_context'], size_local=args['size_local'])
     val_loader = DataLoader(val_set, batch_size=args['val_batch_size'], num_workers=args['num_workers'], shuffle=False)
 
     criterion = CrossEntropyLoss2d(ignore_index=0).cuda()
@@ -128,7 +128,7 @@ def train(train_loader, net, criterion, optimizer, val_loader):
         if acc_v > bestaccV:
             bestaccV = acc_v
             bestloss = loss_v
-            save_path = os.path.join(args['chkpt_dir'], NET_NAME + '_GID_%de_OA%.2f.pth' % (curr_epoch, acc_v * 100))
+            save_path = os.path.join(args['chkpt_dir'], NET_NAME + '_%de_OA%.2f.pth' % (curr_epoch, acc_v * 100))
             torch.save(net.state_dict(), save_path)
         print('Total time: %.1fs Best rec: Train %.2f, Val %.2f, Val_loss %.4f' \
               % (time.time() - begin_time, bestaccT * 100, bestaccV * 100, bestloss))
@@ -168,8 +168,8 @@ def validate(val_loader, net, criterion, curr_epoch):
             acc_meter.update(acc)
 
         if args['save_pred'] and vi == 0:
-            pred_color = GID.Index2Color(preds[0])
-            pred_path = os.path.join(args['pred_dir'], NET_NAME + '_GID.png')
+            pred_color = URUR.Index2Color(preds[0])
+            pred_path = os.path.join(args['pred_dir'], NET_NAME + '.png')
             io.imsave(pred_path, pred_color)
             print('Prediction saved!')
 

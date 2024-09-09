@@ -4,7 +4,6 @@ import numpy as np
 from PIL import Image
 
 # 假设这是类别ID到颜色(R, G, B)的映射表
-'''
 label2color = {
     0: [0, 0, 0], 
     1: [200,0,0], 
@@ -32,7 +31,7 @@ label2color = {
     23: [250,200,250], 
     24: [200,150,0]
 }
-
+'''
 label2color = {
     0: [0, 0, 0], 
     1: [255, 0, 0], 
@@ -44,6 +43,7 @@ label2color = {
     7: [123, 123, 123]
 }
 '''
+'''
 label2color = {
     0: [0, 0, 0], 
     1: [255, 0, 0], 
@@ -52,7 +52,7 @@ label2color = {
     4: [255, 255, 0], 
     5: [0, 0, 255]
 }
-
+'''
 def label2rgb(label_img, label2color):
     """
     将灰度的语义分割标签图像转换为 RGB 格式
@@ -95,8 +95,8 @@ output_path = 'path_to_output_rgb_image.png'  # 输出RGB图像的路径
 convert_and_save(label_path, output_path)
 '''
 if __name__ == "__main__":
-    label_dir = "/data1/gyl/RS_DATASET/FBP/val/gid_labels"
-    output_dir = "/data1/gyl/RS_DATASET/FBP/val/rgb_gid_labels"
+    label_dir = "/data1/gyl/RS_DATASET/FBP/val/fbp_labels"
+    output_dir = "/data1/gyl/RS_DATASET/FBP/val/rgb_fbp_labels"
     label_names = os.listdir(label_dir)
     for label_name in tqdm(label_names):
         label_path = os.path.join(label_dir, label_name)
