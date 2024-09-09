@@ -95,8 +95,8 @@ output_path = 'path_to_output_rgb_image.png'  # 输出RGB图像的路径
 convert_and_save(label_path, output_path)
 '''
 if __name__ == "__main__":
-    label_dir = "/data1/gyl/RS_DATASET/FBP/val/fbp_labels"
-    output_dir = "/data1/gyl/RS_DATASET/FBP/val/rgb_fbp_labels"
+    label_dir = "/data1/gyl/RS_DATASET/FBP/train/fbp_labels"
+    output_dir = "/data1/gyl/RS_DATASET/FBP/train/rgb_fbp_labels"
     label_names = os.listdir(label_dir)
     for label_name in tqdm(label_names):
         label_path = os.path.join(label_dir, label_name)
