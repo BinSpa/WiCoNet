@@ -1,4 +1,5 @@
 import os
+os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 import time
 import torch.autograd
 from skimage import io
