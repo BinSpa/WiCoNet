@@ -45,7 +45,7 @@ def Colorls2Index(ColorLabels):
     return ColorLabels
 
 def Color2Index(ColorLabel):
-    assert False, f"ColorLabel shape:{ColorLabel.shape}"
+    # assert False, f"ColorLabel shape:{ColorLabel.shape}"
     data = ColorLabel.astype(np.int32)
     idx = (data[:, :, 0] * 256 + data[:, :, 1]) * 256 + data[:, :, 2]
     IndexMap = colormap2label[idx]
