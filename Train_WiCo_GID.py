@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
+# os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 import time
 import torch.autograd
 from skimage import io
@@ -36,7 +36,7 @@ args = {
     'lr_decay_power': 1.5,
     'print_freq': 100,
     'save_pred': True,
-    'num_workers': 10,
+    'num_workers': 0,
     'data_dir': '/data1/gyl/RS_DATASET/FBP',
     'pred_dir': os.path.join(working_path, 'results', DATA_NAME),
     'chkpt_dir': os.path.join(working_path, 'checkpoints', DATA_NAME),
