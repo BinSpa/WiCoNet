@@ -312,7 +312,7 @@ def slidding_crop_WC(imgs_s, labels_s, ims, labels, crop_size_global, crop_size_
                 else:
                     s_w_s = s_w
                 e_h_s = s_h_s + c_h + 2*offset
-                e_w_s = e_w_s + c_w + 2*offset
+                e_w_s = s_w_s + c_w + 2*offset
                 s_h_s, s_w_s = int(s_h_s/scale), int(s_w_s/scale)
                 e_h_s, e_w_s = int(e_h_s/scale), int(e_w_s/scale)
                 # e_h_s = int((e_h+2*offset)/scale)
