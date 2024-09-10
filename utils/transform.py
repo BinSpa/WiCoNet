@@ -301,10 +301,22 @@ def slidding_crop_WC(imgs_s, labels_s, ims, labels, crop_size_global, crop_size_
                 if(i==(w_times-1)): s_w = w - c_w
                 e_w = s_w + c_w
                 
-                s_h_s = int(s_h/scale)
-                s_w_s = int(s_w/scale)
-                e_h_s = int((e_h+2*offset)/scale)
-                e_w_s = int((e_w+2*offset)/scale)
+                # s_h_s = int(s_h/scale)
+                # s_w_s = int(s_w/scale)
+                if e_h + 2*offset > h:
+                    s_h_s = (h - 2*offset - c_h)
+                else:
+                    s_h_s = s_h
+                if e_w + 2*offset > w:
+                    s_w_s = (w - 2*offset - c_w)
+                else:
+                    s_w_s = s_w
+                e_h_s = s_h_s + c_h + 2*offset
+                e_w_s = e_w_s + c_w + 2*offset
+                s_h_s, s_w_s = int(s_h_s/scale), int(s_w_s/scale)
+                e_h_s, e_w_s = int(e_h_s/scale), int(e_w_s/scale)
+                # e_h_s = int((e_h+2*offset)/scale)
+                # e_w_s = int((e_w+2*offset)/scale)
                 # print('%d %d %d %d'%(s_h, e_h, s_w, e_w))
                 # print('%d %d %d %d'%(s_h_s, e_h_s, s_w_s, e_w_s))
                 crop_imgs.append(img[s_h:e_h, s_w:e_w, :])
