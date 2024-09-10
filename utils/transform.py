@@ -540,9 +540,9 @@ def random_crop2(img_s, label_s, img, label, crop_size_global, crop_size_local, 
         #print('start_h_s%d, end_h_s%d, start_w_s%d, end_w_s%d'%(start_h_s,end_h_s,start_w_s,end_w_s))
         
         start_h = h_seed*scale
-        end_h = start_h+crop_size_local
+        end_h = min(start_h+crop_size_local, h-crop_size_local)
         start_w = w_seed*scale
-        end_w = start_w+crop_size_local
+        end_w = min(start_w+crop_size_local, w-crop_size_local)
         #print('start_h%d, end_h%d, start_w%d, end_w%d'%(start_h,end_h,start_w,end_w))
         crop_im = img[start_h:end_h, start_w:end_w, :]
         crop_label = label[start_h:end_h, start_w:end_w]
