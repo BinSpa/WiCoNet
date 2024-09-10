@@ -36,7 +36,7 @@ args = {
     'lr_decay_power': 1.5,
     'print_freq': 100,
     'save_pred': True,
-    'num_workers': 0,
+    'num_workers': 10,
     'data_dir': '/data1/gyl/RS_DATASET/FBP',
     'pred_dir': os.path.join(working_path, 'results', DATA_NAME),
     'chkpt_dir': os.path.join(working_path, 'checkpoints', DATA_NAME),
@@ -53,7 +53,7 @@ def main():
     net = Net(4, num_classes=GID.num_classes + 1, size_context=args['size_context'],
               size_local=args['size_local']).cuda()
 
-    train_set = GID.Loader(args['data_dir'], 'val', random_crop=True, crop_nums=args['crop_nums'], random_flip=True,
+    train_set = GID.Loader(args['data_dir'], 'train', random_crop=True, crop_nums=args['crop_nums'], random_flip=True,
                            size_context=args['size_context'], size_local=args['size_local'])
     train_loader = DataLoader(train_set, batch_size=args['train_batch_size'], num_workers=args['num_workers'], shuffle=True)
     val_set = GID.Loader(args['data_dir'], 'val', sliding_crop=True, size_context=args['size_context'], size_local=args['size_local'])

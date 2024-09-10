@@ -72,11 +72,10 @@ def read_RSimages(data_dir, mode, rescale_ratio=False):
     item_list = os.listdir(img_dir)
     for item in item_list:
         if (item[-4:]=='.tif'): data_list.append(os.path.join(img_dir, item))
-    # data_length = int(len(data_list))
-    data_length = 10
+    data_length = int(len(data_list))
     count=0
     data, labels = [], []
-    for it in data_list[:10]:
+    for it in data_list:
         img_path = it
         mask_path = img_path.replace('images', 'rgb_gid_labels') 
         mask_path = mask_path.replace('.tif', '_5label.png')  
