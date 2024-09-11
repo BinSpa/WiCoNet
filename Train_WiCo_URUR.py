@@ -36,7 +36,7 @@ args = {
     'print_freq': 100,
     'save_pred': True,
     'num_workers': 10,
-    'data_dir': '/data1/gyl/RS_DATASET/URUR',
+    'data_dir': '/mnt/data/nas/gyl/RS_DATASET/URUR',
     'pred_dir': os.path.join(working_path, 'results', DATA_NAME),
     'chkpt_dir': os.path.join(working_path, 'checkpoints', DATA_NAME),
     'log_dir': os.path.join(working_path, 'urur_logs', DATA_NAME, NET_NAME)
