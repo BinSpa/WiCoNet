@@ -59,7 +59,7 @@ def main():
     val_set = GID.Loader(args['data_dir'], 'val', sliding_crop=True, size_context=args['size_context'], size_local=args['size_local'])
     val_loader = DataLoader(val_set, batch_size=args['val_batch_size'], num_workers=args['num_workers'], shuffle=False)
 
-    criterion = CrossEntropyLoss2d(ignore_index=0).cuda()
+    criterion = CrossEntropyLoss2d(ignore_index=255).cuda()
     optimizer = optim.SGD(filter(lambda p: p.requires_grad, net.parameters()), lr=args['lr'],
                           weight_decay=args['weight_decay'], momentum=args['momentum'], nesterov=True)
 
