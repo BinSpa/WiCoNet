@@ -35,7 +35,7 @@ args = {
     'lr_decay_power': 1.5,
     'print_freq': 100,
     'save_pred': True,
-    'num_workers': 8,
+    'num_workers': 10,
     'data_dir': '/data1/gyl/RS_DATASET/URUR',
     'pred_dir': os.path.join(working_path, 'results', DATA_NAME),
     'chkpt_dir': os.path.join(working_path, 'checkpoints', DATA_NAME),
