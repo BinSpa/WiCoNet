@@ -9,7 +9,8 @@ import utils.transform as transform
 from skimage.transform import rescale
 
 num_classes = 7
-URUR_COLORMAP = [[0, 0, 0], [255, 0, 0], [0, 255, 0], [0, 255, 255], [255, 255, 0], [0, 0, 255], [255, 0, 255], [123, 123, 123]]
+URUR_COLORMAP = [[0, 0, 0], [230, 230, 230], [95, 163, 7], [100, 100, 100], [200, 230, 160], [255, 255, 100], [150, 200, 250], [240, 100, 80]]
+
 URUR_CLASSES  = ["background", "building", "farmland", "greenhouse", "woodland", "bareland", "water", "road"]
 URUR_MEAN = np.array([122.19, 121.35, 117.29])
 URUR_STD  = np.array([63.26, 62.45, 61.65])

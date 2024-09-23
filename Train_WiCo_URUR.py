@@ -30,7 +30,7 @@ args = {
     'size_local': 256,
     'size_context': 256 * 3,
     'momentum': 0.9,
-    'crop_nums': 100,
+    'crop_nums': 40,
     'weight_decay': 5e-4,
     'lr_decay_power': 1.5,
     'print_freq': 100,
