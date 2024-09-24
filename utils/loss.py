@@ -9,7 +9,7 @@ class CrossEntropyLoss2d(nn.Module):
                                    reduction='elementwise_mean')
 
     def forward(self, inputs, targets):
-        out_ele = targets[targets<0 or targets>7]
+        out_ele = targets[(targets<0) | (targets>7)]
         assert out_ele.size <= 0, f"out range target{out_ele}"
         return self.nll_loss(F.log_softmax(inputs, dim=1), targets)
 
