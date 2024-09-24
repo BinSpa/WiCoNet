@@ -59,10 +59,10 @@ def read_RSimages(data_dir, mode, rescale_ratio=False):
     for item in item_list:
         if (item[-4:]=='.png'): data_list.append(os.path.join(img_dir, item))
     data_length = int(len(data_list))
-    # data_length = 5
+    data_length = 32
     count=0
     data, labels = [], []
-    for it in data_list:
+    for it in data_list[:32]:
         # print(it)
         img_path = it
         mask_path = img_path.replace('image', 'label')
