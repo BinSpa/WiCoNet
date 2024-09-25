@@ -9,8 +9,8 @@ class CrossEntropyLoss2d(nn.Module):
                                    reduction='elementwise_mean')
 
     def forward(self, inputs, targets):
-        out_ele = targets[(targets<0) | (targets>7)]
-        # assert False, f"out range target{out_ele}"
+        values = torch.unique(targets)
+        assert False, f"targets:{values}"
         return self.nll_loss(F.log_softmax(inputs, dim=1), targets)
 
 
