@@ -10,7 +10,7 @@ class CrossEntropyLoss2d(nn.Module):
 
     def forward(self, inputs, targets):
         values = torch.unique(targets)
-        assert False, f"targets:{values}"
+        # assert False, f"targets:{values}"
         return self.nll_loss(F.log_softmax(inputs, dim=1), targets)
 
 
