@@ -68,8 +68,8 @@ def read_RSimages(data_dir, mode, rescale_ratio=False):
         mask_path = img_path.replace('image', 'label')
         img = io.imread(img_path)
         # label = Color2Index(io.imread(mask_path))
-        label = Color2Index(np.array(Image.open(mask_path).convert('RGB')))
-        # label = np.array(Image.open(mask_path).convert('L')).astype(np.uint8)
+        # label = Color2Index(np.array(Image.open(mask_path).convert('RGB')))
+        label = np.array(Image.open(mask_path)).astype(np.uint8)
         # assert False, "label check, shape:{}, dtype:{}".format(label.shape, label.dtype)
         if rescale_ratio:
             img = rescale_image(img, rescale_ratio, 2)
