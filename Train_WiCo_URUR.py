@@ -22,21 +22,21 @@ DATA_NAME = 'URUR'
 
 # Change training parameters here
 args = {
-    'train_batch_size': 16,
-    'val_batch_size': 16,
+    'train_batch_size': 32,
+    'val_batch_size': 32,
     'lr': 0.1,
     'epochs': 100,
     'gpu': True,
     'size_local': 256,
     'size_context': 256 * 3,
     'momentum': 0.9,
-    'crop_nums': 50,
+    'crop_nums': 100,
     'weight_decay': 5e-4,
     'lr_decay_power': 1.5,
     'print_freq': 100,
     'save_pred': True,
-    'num_workers': 10,
-    'data_dir': '/mnt/data/nas/gyl/RS_DATASET/URUR',
+    'num_workers': 12,
+    'data_dir': '/data1/gyl/RS_DATASET/URUR',
     'pred_dir': os.path.join(working_path, 'results', DATA_NAME),
     'chkpt_dir': os.path.join(working_path, 'checkpoints', DATA_NAME),
     'log_dir': os.path.join(working_path, 'urur_logs', DATA_NAME, NET_NAME)
