@@ -22,8 +22,8 @@ DATA_NAME = 'URUR'
 
 # Change training parameters here
 args = {
-    'train_batch_size': 32,
-    'val_batch_size': 32,
+    'train_batch_size': 16,
+    'val_batch_size': 16,
     'lr': 0.1,
     'epochs': 50,
     'gpu': True,
