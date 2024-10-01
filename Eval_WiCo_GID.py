@@ -28,8 +28,8 @@ args = {
     'val_batch_size': 1,
     'size_local': 256,
     'size_context': 256 * 3,
-    'data_dir': 'YOUR_DATA_DIR',
-    'load_path': 'YOUR_DATA_DIRSAVED_MODEL_CHECKPOINT.pth'
+    'data_dir': '/data1/gyl/RS_DATASET/FBP',
+    'load_path': '/data1/gyl/RS_Code/WiCoNet/checkpoints/GID/WiCoNet_3hw4L_49e_OA96.19.pth'
 }
 
 
