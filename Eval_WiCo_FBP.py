@@ -68,7 +68,7 @@ def main():
     info_txt_path = os.path.join(pred_path, 'info.txt')
     f = open(info_txt_path, 'w+')
 
-    val_set = FBP.Loader(args['data_dir'], 'test', sliding_crop=True, size_context=args['size_context'], size_local=args['size_local'])
+    val_set = FBP.Loader(args['data_dir'], 'val', sliding_crop=True, size_context=args['size_context'], size_local=args['size_local'])
     val_loader = DataLoader(val_set, batch_size=args['val_batch_size'], num_workers=4, shuffle=False)
     predict(net, val_loader, pred_path, f)
     f.close()
