@@ -50,7 +50,7 @@ writer = SummaryWriter(args['log_dir'])
 
 
 def main():
-    net = Net(4, num_classes=GID.num_classes + 1, size_context=args['size_context'],
+    net = Net(3, num_classes=GID.num_classes + 1, size_context=args['size_context'],
               size_local=args['size_local']).cuda()
 
     train_set = GID.Loader(args['data_dir'], 'train', random_crop=True, crop_nums=args['crop_nums'], random_flip=True,

@@ -58,7 +58,7 @@ def draw_rectangle(img, pos='boundary', color=(0, 255, 0), thick=2, text='contex
 
 
 def main():
-    net = Net(4, num_classes=GID.num_classes + 1, size_context=args['size_context'], size_local=args['size_local']).cuda()
+    net = Net(3, num_classes=GID.num_classes + 1, size_context=args['size_context'], size_local=args['size_local']).cuda()
     net.load_state_dict(torch.load(args['load_path']))  # , strict = False
     net = net.cuda()
     net.eval()

@@ -68,7 +68,7 @@ def get_file_name(mode='train'):
 def read_RSimages(data_dir, mode, rescale_ratio=False):
     assert mode in ['train', 'val', 'test']
     data_list = []
-    img_dir = os.path.join(data_dir, mode, 'images')
+    img_dir = os.path.join(data_dir, mode, 'rgb_images')
     item_list = os.listdir(img_dir)
     for item in item_list:
         if (item[-4:]=='.tif'): data_list.append(os.path.join(img_dir, item))
@@ -77,7 +77,7 @@ def read_RSimages(data_dir, mode, rescale_ratio=False):
     data, labels = [], []
     for it in data_list:
         img_path = it
-        mask_path = img_path.replace('images', 'rgb_gid_labels') 
+        mask_path = img_path.replace('rbg_images', 'rgb_gid_labels') 
         mask_path = mask_path.replace('.tif', '_5label.png')  
         img = io.imread(img_path)
         label = Color2Index(io.imread(mask_path))
