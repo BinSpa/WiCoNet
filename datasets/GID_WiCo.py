@@ -23,7 +23,7 @@ def IRRGB2RGBIR(img):
     return cv2.merge((R, G, B, IR))
 
 def normalize_image(im):
-    return (im - GID_MEAN_IRRGB) / GID_STD_IRRGB
+    return (im - GID_MEAN_RGB) / GID_STD_RGB
 
 def normalize_images(imgs):
     for i, im in enumerate(imgs):
