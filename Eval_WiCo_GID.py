@@ -29,7 +29,7 @@ args = {
     'size_local': 256,
     'size_context': 256 * 3,
     'data_dir': '/data1/gyl/RS_DATASET/FBP',
-    'load_path': ' WiCoNet_3hw4L_1e_OA76.40.pth'
+    'load_path': '/data1/gyl/RS_Code/WiCoNet/checkpoints/GID/WiCoNet_3hw4L_1e_OA76.40.pth'
 }
 
 
